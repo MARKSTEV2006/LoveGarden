@@ -300,7 +300,8 @@
     config.music || 'assets/music.mp3'
   );
 
-  audio.preload = 'none';
+  audio.preload = 'auto';
+  audio.load();
   audio.volume = 0.43;
   audio.loop = true;
 
@@ -321,6 +322,8 @@
   async function playMusic() {
 
     audioWanted = true;
+
+    updateMusicButton('Loading music...');
 
     try {
 
@@ -369,6 +372,11 @@
 
     }
 
+  });
+
+  audio.addEventListener('playing', () => {
+    audioPlaying = true;
+    updateMusicButton();
   });
 
   audio.addEventListener('error', () => {
@@ -594,7 +602,7 @@
 
   function showItem(index) {
 
-    clearInterval(slideTimer);
+    clearTimeout(slideTimer);
 
     slideTimer = null;
 
@@ -673,7 +681,7 @@
 
       video.controls = true;
       video.playsInline = true;
-      video.preload = 'metadata';
+      video.preload = 'none';
 
       video.setAttribute('playsinline', '');
 
@@ -763,11 +771,13 @@
       img.alt = itemCaption(group, entry, next);
 
       img.decoding = 'async';
+      img.loading = 'eager';
 
       img.onload = () => {
 
         if (token === photoToken) {
           photoFrame.replaceChildren(img);
+          resetSlideTimer();
         }
 
       };
@@ -802,32 +812,29 @@
 
   function resetSlideTimer() {
 
-    clearInterval(slideTimer);
-
+    clearTimeout(slideTimer);
     slideTimer = null;
 
     const group = groups[activeGroup];
+    const visibleImage = photoFrame.querySelector('img');
 
+    // Never switch away while the current image is downloading.
     if (
       group.type === 'photo' &&
       group.items.length > 1 &&
-      opened
+      opened &&
+      visibleImage &&
+      visibleImage.complete &&
+      visibleImage.naturalWidth > 0
     ) {
-
-      slideTimer = setInterval(() => {
-
-        if (!document.hidden) {
-
-          showItem(
-            activeIndices[activeGroup] + 1
-          );
-
+      slideTimer = setTimeout(() => {
+        if (document.hidden) {
+          resetSlideTimer();
+          return;
         }
-
-      }, 5800);
-
+        showItem(activeIndices[activeGroup] + 1);
+      }, 8500);
     }
-
   }
 
 

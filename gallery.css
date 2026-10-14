@@ -346,3 +346,19 @@
 /* ==========================================
    END OF GALLERY.CSS
    ========================================== */
+
+
+/* LOVE GARDEN SPEED FIX: VIDEO POSTER HEIGHT */
+.photo-stage.is-video {
+  min-height: 210px !important;
+  aspect-ratio: 16 / 9 !important;
+  background: #291f2c;
+}
+.photo-stage.is-video .photo-frame {
+  min-height: 210px !important;
+}
+.photo-frame .gallery-video {
+  aspect-ratio: 16 / 9;
+  min-height: 210px;
+  background: #291f2c;
+}

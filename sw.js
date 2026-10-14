@@ -4,7 +4,7 @@
 // PHOTO & VIDEO GALLERY EDITION
 // ==========================================
 
-const VERSION = 'love-garden-gallery-v4';
+const VERSION = 'love-garden-gallery-v5-speed';
 
 const CORE = [
   './',
@@ -16,8 +16,7 @@ const CORE = [
   './manifest.webmanifest',
   './assets/icons/icon-192.png',
   './assets/icons/icon-512.png',
-  './assets/icons/icon-180.png',
-  './assets/music.mp3'
+  './assets/icons/icon-180.png'
 ];
 
 // INSTALL SERVICE WORKER

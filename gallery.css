@@ -1,0 +1,348 @@
+
+/* ==========================================
+   LOVE GARDEN
+   PHOTO & VIDEO ALBUM GALLERY
+   FIXED SPACING + RESPONSIVE DESIGN
+   ========================================== */
+
+/* ===== ALBUM SECTION ===== */
+
+.memory-tabs {
+  margin-top: 12px;
+  padding-top: 12px;
+  border-top: 1px solid rgba(180, 116, 139, 0.15);
+}
+
+.memory-tabs-hint {
+  margin: 0 0 10px;
+  text-align: center;
+  font-size: 11px;
+  color: #a87988;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  font-weight: 800;
+}
+
+/* ===== FOUR ALBUM BUTTONS ===== */
+
+.memory-tab-buttons {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 8px;
+}
+
+.memory-tab {
+  cursor: pointer;
+  min-height: 43px;
+  padding: 10px 9px;
+
+  border: 1px solid #eac9d3;
+  border-radius: 12px;
+
+  background: rgba(255, 248, 250, 0.88);
+  color: #9b6074;
+
+  font:
+    700 11px/1.4
+    'Trebuchet MS',
+    'Segoe UI',
+    sans-serif;
+
+  letter-spacing: 0.025em;
+
+  transition:
+    background 0.2s,
+    color 0.2s,
+    transform 0.2s,
+    border-color 0.2s;
+}
+
+.memory-tab:hover {
+  background: #f9e6ed;
+  transform: translateY(-2px);
+}
+
+.memory-tab.is-active,
+.memory-tab[aria-pressed="true"] {
+  background: #b66d84;
+  color: white;
+  border-color: #b66d84;
+
+  box-shadow: 0 4px 12px rgba(182, 109, 132, 0.2);
+}
+
+.memory-tab:focus-visible {
+  outline: 3px solid #b66d84;
+  outline-offset: 2px;
+}
+
+/* ===== GALLERY HEADER ===== */
+
+.photo-card .photo-topline span:first-child {
+  max-width: 75%;
+  overflow-wrap: anywhere;
+  line-height: 1.4;
+}
+
+/* ==========================================
+   FIX: REMOVE LARGE EMPTY SPACE
+   ========================================== */
+
+/* Prevent left card from stretching
+   to match the taller love letter card. */
+
+.photo-card {
+  align-self: start;
+  height: auto;
+}
+
+/* Remove the fixed aspect ratio
+   from the original styles.css. */
+
+.photo-stage {
+  width: 100% !important;
+  height: auto !important;
+  min-height: 0 !important;
+  aspect-ratio: auto !important;
+
+  margin-bottom: 6px !important;
+  overflow: hidden;
+
+  border-radius: 12px;
+}
+
+/* Let the frame follow the image height. */
+
+.photo-frame {
+  display: block !important;
+
+  width: 100% !important;
+  height: auto !important;
+  min-height: 0 !important;
+
+  aspect-ratio: auto !important;
+  overflow: hidden !important;
+
+  background: transparent;
+}
+
+/* ===== PHOTO DISPLAY ===== */
+
+.photo-frame img {
+  display: block !important;
+
+  width: 100% !important;
+  height: auto !important;
+
+  max-height: 520px;
+
+  object-fit: contain;
+  object-position: center;
+
+  border-radius: 12px;
+
+  transition: opacity 0.35s ease;
+}
+
+/* ==========================================
+   PHOTO CAPTION
+   ========================================== */
+
+.photo-caption {
+  margin-top: 8px !important;
+  margin-bottom: 10px !important;
+
+  text-align: center;
+  font-style: italic;
+
+  color: #a96b85;
+}
+
+/* ==========================================
+   SLIDESHOW CONTROLS
+   ========================================== */
+
+.gallery-controls {
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  gap: 14px;
+
+  margin-top: 8px !important;
+  margin-bottom: 12px !important;
+}
+
+/* ===== SLIDESHOW DOTS ===== */
+
+.gallery-dots {
+  min-width: 0;
+  max-width: clamp(100px, 23vw, 220px);
+
+  display: flex;
+  align-items: center;
+
+  overflow-x: auto;
+  overflow-y: hidden;
+
+  padding: 6px 2px;
+  scrollbar-width: thin;
+}
+
+.gallery-dots button {
+  flex: 0 0 auto;
+}
+
+.gallery-dots[hidden] {
+  display: none;
+}
+
+/* ==========================================
+   VIDEO PLAYER
+   ========================================== */
+
+.photo-stage.is-video {
+  background: #291f2c;
+  aspect-ratio: auto !important;
+}
+
+.photo-frame .gallery-video {
+  display: block !important;
+
+  width: 100% !important;
+  height: auto !important;
+
+  max-height: 520px;
+
+  object-fit: contain;
+
+  background: #291f2c;
+  border-radius: 12px;
+}
+
+/* ==========================================
+   EMPTY MEDIA PLACEHOLDER
+   ========================================== */
+
+.photo-frame .photo-placeholder {
+  width: 100%;
+  min-height: 230px;
+}
+
+.gallery-empty p {
+  max-width: 280px;
+}
+
+.gallery-empty small {
+  max-width: 280px;
+  overflow-wrap: anywhere;
+  line-height: 1.6;
+}
+
+/* ==========================================
+   TOUCH GESTURES
+   ========================================== */
+
+.photo-stage {
+  touch-action: pan-y;
+}
+
+/* ==========================================
+   PHOTO FOOTNOTE
+   ========================================== */
+
+.photo-footnote {
+  margin-top: 13px !important;
+  margin-bottom: 4px !important;
+
+  text-align: center;
+}
+
+/* ==========================================
+   TABLET RESPONSIVE
+   ========================================== */
+
+@media (max-width: 780px) {
+
+  .gallery-dots {
+    max-width: 230px;
+  }
+
+  .photo-frame img {
+    max-height: 480px;
+  }
+
+  .photo-frame .gallery-video {
+    max-height: 480px;
+  }
+
+  .photo-caption {
+    margin-top: 7px !important;
+  }
+
+  .memory-tabs {
+    margin-top: 10px;
+  }
+
+}
+
+/* ==========================================
+   MOBILE RESPONSIVE
+   ========================================== */
+
+@media (max-width: 460px) {
+
+  .memory-tab-buttons {
+    gap: 7px;
+  }
+
+  .memory-tab {
+    font-size: 10px;
+    min-height: 48px;
+    padding: 8px 6px;
+  }
+
+  .gallery-dots {
+    max-width: min(47vw, 190px);
+  }
+
+  .memory-tabs {
+    margin-top: 10px;
+    padding-top: 10px;
+  }
+
+  .photo-stage {
+    margin-bottom: 4px !important;
+  }
+
+  .photo-frame img {
+    max-height: 440px;
+    border-radius: 10px;
+  }
+
+  .photo-frame .gallery-video {
+    max-height: 440px;
+    border-radius: 10px;
+  }
+
+  .photo-caption {
+    margin-top: 6px !important;
+    margin-bottom: 8px !important;
+    font-size: 19px;
+  }
+
+  .gallery-controls {
+    margin-top: 5px !important;
+    margin-bottom: 9px !important;
+  }
+
+  .photo-footnote {
+    margin-top: 10px !important;
+  }
+
+}
+
+/* ==========================================
+   END OF GALLERY.CSS
+   ========================================== */

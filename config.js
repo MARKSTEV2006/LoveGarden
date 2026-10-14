@@ -7,7 +7,7 @@
 
    37 LOVE PICTURES
    11 BOOTAN PICTURES
-   23 COUPLE PICTURES
+   23 COUPLE PICTURE SLOTS
    5 VIDEOS WITH THUMBNAILS
 
    BACKGROUND MUSIC: MP3
@@ -125,9 +125,16 @@ pagalalisan nato, sabay nato yaan i fix para kanato duha, Happiest 30th Monthsar
 
       type: "photo",
 
-      // love1.jpg to love37.jpg
+      // love1.jpg to love36.jpg
+      // love37.png
 
-      items: createPhotoList("love", 37)
+      items: createPhotoList(
+        "love",
+        37,
+        {
+          37: "love37.png"
+        }
+      )
 
     },
 
@@ -158,7 +165,7 @@ pagalalisan nato, sabay nato yaan i fix para kanato duha, Happiest 30th Monthsar
     // ====================================
     // ALBUM 3
     // OUR MEMORIES
-    // 23 PICTURES NINYONG DALAWA
+    // 23 EXPECTED PICTURE SLOTS
     // ====================================
 
     {
@@ -171,7 +178,15 @@ pagalalisan nato, sabay nato yaan i fix para kanato duha, Happiest 30th Monthsar
 
       type: "photo",
 
-      // Photos 8 and 9 are PNG.
+      // photos8 and photos9 are PNG.
+      //
+      // photos17.jpg and photos23.jpg
+      // are not currently uploaded.
+      //
+      // They are excluded temporarily
+      // to prevent broken images.
+      //
+      // Currently displays 21 photos.
 
       items: createPhotoList(
         "photos",
@@ -180,6 +195,12 @@ pagalalisan nato, sabay nato yaan i fix para kanato duha, Happiest 30th Monthsar
           8: "photos8.png",
           9: "photos9.png"
         }
+      ).filter(
+        (filename) =>
+          ![
+            "photos17.jpg",
+            "photos23.jpg"
+          ].includes(filename)
       )
 
     },
@@ -206,55 +227,65 @@ pagalalisan nato, sabay nato yaan i fix para kanato duha, Happiest 30th Monthsar
         // VIDEO 1
 
         {
+
           file: "video1.mp4",
 
           caption: "Our First Video Together ♡",
 
           poster: "assets/thumbnails/cover1.jpg"
+
         },
 
 
         // VIDEO 2
 
         {
+
           file: "video2.mp4",
 
           caption: "My Favorite Moment With You ♡",
 
           poster: "assets/thumbnails/cover2.jpg"
+
         },
 
 
         // VIDEO 3
 
         {
+
           file: "video3.mp4",
 
           caption: "Forever Us ♡",
 
           poster: "assets/thumbnails/cover3.jpg"
+
         },
 
 
         // VIDEO 4
 
         {
+
           file: "video4.mp4",
 
           caption: "Our Beautiful Memories ♡",
 
           poster: "assets/thumbnails/cover4.jpg"
+
         },
 
 
         // VIDEO 5
 
         {
+
           file: "video5.mp4",
 
           caption: "Every Moment With You ♡",
 
           poster: "assets/thumbnails/cover5.jpg"
+
         }
 
       ]
